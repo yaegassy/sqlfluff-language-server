@@ -60,7 +60,7 @@ Now `set runtimepath^=/path/to/sqlfluff-language-server` in "vimrc/init.vim"
 
 ## Related coc.nvim extension
 
-- coc-sqlfluff
+- [yaegassy/coc-sqlfluff](https://github.com/yaegassy/coc-sqlfluff)
   - Using the sqlfluff [CLI](https://docs.sqlfluff.com/en/stable/cli.html)
 
 ## Thanks
