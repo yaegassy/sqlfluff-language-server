@@ -14,7 +14,7 @@ from pygls.lsp.types import (
     Position,
     Range,
 )
-from pygls.lsp.types.basic_structures import Diagnostic, TextEdit
+from pygls.lsp.types.basic_structures import Diagnostic, DiagnosticSeverity, TextEdit
 from pygls.lsp.types.general_messages import InitializeParams, InitializedParams
 from pygls.lsp.types.language_features.formatting import DocumentFormattingParams
 from pygls.lsp.types.workspace import DidChangeTextDocumentParams
@@ -64,6 +64,7 @@ def _validate_sqlfluff(ls: SqlFluffLanguageServer, source: str):
                 message=msg,
                 source="sqlfluff-ls",
                 code=code,
+                severity=DiagnosticSeverity.Error,
             )
 
             diagnostics.append(d)
