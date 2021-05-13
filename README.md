@@ -2,6 +2,8 @@
 
 [Expelmental] A sql language server exclusively for [sqlfluff](https://pypi.org/project/sqlfluff/) and [coc.nvim](https://github.com/neoclide/coc.nvim) extension.
 
+<img width="780" alt="sqlfluff-language-server-demo" src="https://user-images.githubusercontent.com/188642/118091006-40354080-b405-11eb-9e53-6cc1e768167a.gif">
+
 ## Overview
 
 - "Server" by `sqlfluff-language-server` command (Language server)
