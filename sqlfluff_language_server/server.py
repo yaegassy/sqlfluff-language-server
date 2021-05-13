@@ -1,6 +1,7 @@
 from typing import List, Optional
 
 from pygls.lsp.methods import (
+    CODE_ACTION,
     FORMATTING,
     INITIALIZE,
     INITIALIZED,
@@ -14,8 +15,19 @@ from pygls.lsp.types import (
     Position,
     Range,
 )
-from pygls.lsp.types.basic_structures import Diagnostic, DiagnosticSeverity, TextEdit
+from pygls.lsp.types.basic_structures import (
+    Diagnostic,
+    DiagnosticSeverity,
+    TextEdit,
+    WorkspaceEdit,
+)
 from pygls.lsp.types.general_messages import InitializeParams, InitializedParams
+from pygls.lsp.types.language_features.code_action import (
+    CodeAction,
+    CodeActionKind,
+    CodeActionOptions,
+    CodeActionParams,
+)
 from pygls.lsp.types.language_features.formatting import DocumentFormattingParams
 from pygls.lsp.types.workspace import DidChangeTextDocumentParams
 from pygls.server import LanguageServer
@@ -126,6 +138,73 @@ def formatting(
     ls: SqlFluffLanguageServer, params: DocumentFormattingParams
 ) -> Optional[List[TextEdit]]:
     return _formatting(ls, params.text_document.uri)
+
+
+@sqlfluff_server.feature(
+    CODE_ACTION,
+    CodeActionOptions(
+        code_action_kinds=[
+            CodeActionKind.RefactorInline,
+            CodeActionKind.RefactorExtract,
+        ]
+    ),
+)
+def code_action(
+    ls: SqlFluffLanguageServer, params: CodeActionParams
+) -> Optional[List[CodeAction]]:
+    code_actions = []
+
+    if (
+        params.range.start.line == params.range.end.line
+        and params.range.start.character == 0
+        and len(params.context.diagnostics) > 0
+    ):
+        text_doc = ls.workspace.get_document(params.text_document.uri)
+        current_content = text_doc.lines[params.range.start.line]
+
+        noqa_content = current_content.rstrip() + " -- noqa"
+        noqa_disable_all_content = current_content.rstrip() + " -- noqa: disable=all"
+        noqa_enable_all_content = current_content.rstrip() + " -- noqa: enable=all"
+
+        noqa_edit = TextEdit(range=params.range, new_text=noqa_content)
+        noqa_disable_all_edit = TextEdit(
+            range=params.range, new_text=noqa_disable_all_content
+        )
+        noqa_enable_all_edit = TextEdit(
+            range=params.range, new_text=noqa_enable_all_content
+        )
+
+        code_actions.append(
+            CodeAction(
+                title="Ignoring Errors for current line (-- noqa)",
+                kind=CodeActionKind.RefactorInline,
+                edit=WorkspaceEdit(changes={params.text_document.uri: [noqa_edit]}),
+            ),
+        )
+
+        code_actions.append(
+            CodeAction(
+                title="Ignoring Errors for current line (-- noqa: disable=all)",
+                kind=CodeActionKind.RefactorInline,
+                edit=WorkspaceEdit(
+                    changes={params.text_document.uri: [noqa_disable_all_edit]}
+                ),
+            ),
+        )
+
+        code_actions.append(
+            CodeAction(
+                title="Ignoring Errors for current line (-- noqa: enable=all)",
+                kind=CodeActionKind.RefactorInline,
+                edit=WorkspaceEdit(
+                    changes={params.text_document.uri: [noqa_enable_all_edit]}
+                ),
+            ),
+        )
+
+        return code_actions
+
+    return None
 
 
 @sqlfluff_server.feature(INITIALIZE)

@@ -13,6 +13,7 @@
 
 - Lint
 - Format
+- Code Action
 
 ## Note
 
