@@ -49,7 +49,9 @@ optional arguments:
 
 > default: `stdio`
 
-### Client (coc-sqlfluff-ls)
+### Client
+
+### coc-sqlfluff-ls
 
 ```sh
 yarn install
@@ -57,6 +59,21 @@ yarn install
 ```
 
 Now `set runtimepath^=/path/to/sqlfluff-language-server` in "vimrc/init.vim"
+
+### vim-lsp
+
+```vim
+if executable('sqlfluff-language-server')
+  augroup LspVim
+    au!
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'sqlfluff-language-server',
+        \ 'cmd': {server_info->['sqlfluff-language-server']},
+        \ 'allowlist': ['sql'],
+		\ })
+  augroup END
+endif
+```
 
 ## Related coc.nvim extension
 
