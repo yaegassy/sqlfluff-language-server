@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "sqlfluff-language-server"
+version = "0.1.0"
+description = ""
+authors = ["yaegassy"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pygls = "^0.10.3"
+sqlfluff = "^0.5.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+mock = "^4.0.3"
+pytest-asyncio = "^0.15.1"
+
+[tool.poetry.scripts]
+sqlfluff-language-server = 'sqlfluff_language_server.__main__:main'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
