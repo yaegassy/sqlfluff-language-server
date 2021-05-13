@@ -70,7 +70,7 @@ if executable('sqlfluff-language-server')
         \ 'name': 'sqlfluff-language-server',
         \ 'cmd': {server_info->['sqlfluff-language-server']},
         \ 'allowlist': ['sql'],
-		\ })
+        \ })
   augroup END
 endif
 ```
