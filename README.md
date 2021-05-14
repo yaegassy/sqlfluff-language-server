@@ -50,7 +50,7 @@ optional arguments:
 
 > default: `stdio`
 
-### Client
+## Client
 
 ### coc-sqlfluff-ls
 
