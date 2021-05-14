@@ -99,6 +99,22 @@ pluggy = "*"
 pygments = "*"
 
 [[package]]
+name = "importlib-metadata"
+version = "4.0.1"
+description = "Read metadata from Python packages"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+typing-extensions = {version = ">=3.6.4", markers = "python_version < \"3.8\""}
+zipp = ">=0.5"
+
+[package.extras]
+docs = ["sphinx", "jaraco.packaging (>=8.2)", "rst.linker (>=1.9)"]
+testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.0.1)", "packaging", "pep517", "pyfakefs", "flufl.flake8", "pytest-black (>=0.3.7)", "pytest-mypy", "importlib-resources (>=1.3)"]
+
+[[package]]
 name = "inflect"
 version = "5.3.0"
 description = "Correctly generate plurals, singular nouns, ordinals, indefinite articles; convert numbers to words"
@@ -203,6 +219,9 @@ category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
+[package.dependencies]
+importlib-metadata = {version = ">=0.12", markers = "python_version < \"3.8\""}
+
 [package.extras]
 dev = ["pre-commit", "tox"]
 
@@ -274,6 +293,7 @@ python-versions = ">=3.5"
 atomicwrites = {version = ">=1.0", markers = "sys_platform == \"win32\""}
 attrs = ">=17.4.0"
 colorama = {version = "*", markers = "sys_platform == \"win32\""}
+importlib-metadata = {version = ">=0.12", markers = "python_version < \"3.8\""}
 more-itertools = ">=4.0.0"
 packaging = "*"
 pluggy = ">=0.12,<1.0"
@@ -308,7 +328,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
 
 [[package]]
 name = "sqlfluff"
-version = "0.5.5"
+version = "0.5.6"
 description = "Modular SQL Linting for Humans"
 category = "main"
 optional = false
@@ -359,10 +379,22 @@ category = "main"
 optional = false
 python-versions = "*"
 
+[[package]]
+name = "zipp"
+version = "3.4.1"
+description = "Backport of pathlib-compatible object wrapper for zip files"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+docs = ["sphinx", "jaraco.packaging (>=8.2)", "rst.linker (>=1.9)"]
+testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pytest-cov", "pytest-enabler", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy"]
+
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.9"
-content-hash = "10376b425920623b4748fbb10816a6f1697205c4eae4748153dd76a281d29f9f"
+python-versions = "^3.7"
+content-hash = "d08870a0777796c69c068a5442b788076937742cf4a56dc02df5e1c78556975b"
 
 [metadata.files]
 appdirs = [
@@ -404,6 +436,10 @@ configparser = [
 diff-cover = [
     {file = "diff_cover-5.1.1-py3-none-any.whl", hash = "sha256:e1df5a00fb8a9615e17b98fdcf93b20edbfda4ce964ddf386bc6c2c7e6a1936f"},
     {file = "diff_cover-5.1.1.tar.gz", hash = "sha256:957be57b3e0881293e03ba42991b7715864a49c0d2d600b481f5cc3f21145193"},
+]
+importlib-metadata = [
+    {file = "importlib_metadata-4.0.1-py3-none-any.whl", hash = "sha256:d7eb1dea6d6a6086f8be21784cc9e3bcfa55872b52309bc5fad53a8ea444465d"},
+    {file = "importlib_metadata-4.0.1.tar.gz", hash = "sha256:8c501196e49fb9df5df43833bdb1e4328f64847763ec8a50703148b73784d581"},
 ]
 inflect = [
     {file = "inflect-5.3.0-py3-none-any.whl", hash = "sha256:42560be16af702a21d43d59427f276b5aed79efb1ded9b713468c081f4353d10"},
@@ -557,8 +593,8 @@ pyyaml = [
     {file = "PyYAML-5.4.1.tar.gz", hash = "sha256:607774cbba28732bfa802b54baa7484215f530991055bb562efbed5b2f20a45e"},
 ]
 sqlfluff = [
-    {file = "sqlfluff-0.5.5-py3-none-any.whl", hash = "sha256:3b194ab8f285c18ebaca198847b479a69ab40cad9a3b32ae242fa54f6d63c44a"},
-    {file = "sqlfluff-0.5.5.tar.gz", hash = "sha256:339a068d7102575cf44d771ee8c81fad70f2373fd7137e7136ef673347234dc7"},
+    {file = "sqlfluff-0.5.6-py3-none-any.whl", hash = "sha256:dbc9720b4a5f6a48db0710bd97d90ecd257beecf0e9507d2e3a77323b3631571"},
+    {file = "sqlfluff-0.5.6.tar.gz", hash = "sha256:5d7cdfdd59cd5e4d99702c22bf242e9c9c96c98e7648865aae8b5a0c344d7efe"},
 ]
 typeguard = [
     {file = "typeguard-2.12.0-py3-none-any.whl", hash = "sha256:7d1cf82b35e9ff3cd083133ebda54ad1d7a40296471397e6c6b229cf07fe5307"},
@@ -572,4 +608,8 @@ typing-extensions = [
 wcwidth = [
     {file = "wcwidth-0.2.5-py2.py3-none-any.whl", hash = "sha256:beb4802a9cebb9144e99086eff703a642a13d6a0052920003a230f3294bbe784"},
     {file = "wcwidth-0.2.5.tar.gz", hash = "sha256:c4d647b99872929fdb7bdcaa4fbe7f01413ed3d98077df798530e5b04f116c83"},
+]
+zipp = [
+    {file = "zipp-3.4.1-py3-none-any.whl", hash = "sha256:51cb66cc54621609dd593d1787f286ee42a5c0adbb4b29abea5a63edc3e03098"},
+    {file = "zipp-3.4.1.tar.gz", hash = "sha256:3607921face881ba3e026887d8150cca609d517579abe052ac81fc5aeffdbd76"},
 ]

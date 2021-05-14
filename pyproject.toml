@@ -7,7 +7,7 @@ authors = ["yaegassy"]
 [tool.poetry.dependencies]
 python = "^3.7"
 pygls = "^0.10.3"
-sqlfluff = "^0.5.5"
+sqlfluff = "^0.5.6"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
