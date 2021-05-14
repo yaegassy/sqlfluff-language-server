@@ -6,7 +6,7 @@
 
 ## Overview
 
-- "Server" by `sqlfluff-language-server` command (Language server)
+- "Server" by `sqlfluff-language-server` command ([pygls](https://github.com/openlawlibrary/pygls) based language server)
 - "Client" by `coc-sqlfluff-ls` (For operation test)
 
 ## Features
