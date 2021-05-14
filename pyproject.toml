@@ -5,7 +5,7 @@ description = ""
 authors = ["yaegassy"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.7"
 pygls = "^0.10.3"
 sqlfluff = "^0.5.5"
 
