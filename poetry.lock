@@ -308,7 +308,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
 
 [[package]]
 name = "sqlfluff"
-version = "0.5.3"
+version = "0.5.5"
 description = "Modular SQL Linting for Humans"
 category = "main"
 optional = false
@@ -362,7 +362,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "ba67dc5380fa86d81dc4d0b34be7ba032d20bf2190dd23aaab83712b9d42a1ef"
+content-hash = "10376b425920623b4748fbb10816a6f1697205c4eae4748153dd76a281d29f9f"
 
 [metadata.files]
 appdirs = [
@@ -557,8 +557,8 @@ pyyaml = [
     {file = "PyYAML-5.4.1.tar.gz", hash = "sha256:607774cbba28732bfa802b54baa7484215f530991055bb562efbed5b2f20a45e"},
 ]
 sqlfluff = [
-    {file = "sqlfluff-0.5.3-py3-none-any.whl", hash = "sha256:b31a34c31746e20ecda3527c3dfaa817d9a5dd62b45cba1f2197ded4baa9f904"},
-    {file = "sqlfluff-0.5.3.tar.gz", hash = "sha256:69f2f58d529c0673b7efd87b1a357ce6a9a7ba62d6593ac1690149d1307ab3f4"},
+    {file = "sqlfluff-0.5.5-py3-none-any.whl", hash = "sha256:3b194ab8f285c18ebaca198847b479a69ab40cad9a3b32ae242fa54f6d63c44a"},
+    {file = "sqlfluff-0.5.5.tar.gz", hash = "sha256:339a068d7102575cf44d771ee8c81fad70f2373fd7137e7136ef673347234dc7"},
 ]
 typeguard = [
     {file = "typeguard-2.12.0-py3-none-any.whl", hash = "sha256:7d1cf82b35e9ff3cd083133ebda54ad1d7a40296471397e6c6b229cf07fe5307"},
